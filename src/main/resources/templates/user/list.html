@@ -1,0 +1,99 @@
+<div class="layui-body" style="bottom: 0;">
+    <ul class="layui-tab-title">
+        <li>位置：用户列表
+    </ul>
+<div class="layui-form">
+    <div class="layui-inline" style="margin-left: 60px; float: right;">
+
+        <div class="layui-input-inline" style="width: 300px;">
+            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="输入需要查询的用户昵称/手机号" class="layui-input ssInput">
+        </div>
+        <button class="layui-btn zdy-green" data-method="balanceSet">查询</button>
+    </div>
+    <button id="add" class="layui-btn zdy-green" data-method="add">添加用户</button>
+</div>
+
+<div>
+    <table class="layui-table" lay-size="lg">
+        <colgroup>
+            <col width="150">
+            <col width="200">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th>头像</th>
+            <th>账号</th>
+            <th>昵称</th>
+            <th>联系电话</th>
+            <th>账户余额</th>
+            <th>最近登录时间</th>
+            <th>创建时间</th>
+            <th>状态</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <#list userList as user>
+        <tr>
+            <td><img src="${user.userIcon}" width="60px"></td>
+            <td>${(user.userName)}</td>
+            <td>${user.nickname}</td>
+            <td>${user.userPhone}</td>
+            <td>${user.totalMoney}元</td>
+            <td>${user.loginTime!?string('yyyy-MM-dd hh:mm:ss')}</td>
+            <td>${user.createTime!?string('yyyy-MM-dd hh:mm:ss')}</td>
+
+            <#if user.forbiddenStatus == 0>
+            <td><button class="layui-btn zdy-green" data-method="supervise">启用中</button></td>
+            <#else>
+            <td> <button class="layui-btn layui-btn-disabled" data-method="supervise">禁用中</button></td>
+        </#if>
+            <td>
+                <button class="layui-btn layui-btn-sm layui-bg-blue" data-method="update">编辑</button>
+                <button class="layui-btn layui-btn-sm layui-btn-normal" data-method="supervise">员工管理</button>
+                <button class="layui-btn layui-btn-sm layui-bg-red" data-method="delete">删除</button>
+            </td>
+        </tr>
+        </#list>
+        </tbody>
+    </table>
+</div>
+<div id="test1">111</div>
+</div>
+<script>
+    layui.use(['laypage','layer'],function(){
+        var laypage=layui.laypage;
+        var layer=layui.layer;
+
+        var $=layui.jquery;
+        $("#add").click(function () {
+            layer.open({
+                type: 1,
+                title: "添加用户",
+                area: ['70%', '95%'],
+                content: '传入任意的文本或html' //这里content是一个普通的String
+            });
+        })
+
+
+
+        //执行一个laypage实例
+        laypage.render({
+            elem: 'test1', //注意，这里的 test1 是 ID，不用加 # 号
+            count: 10, //数据总数，从服务端得到
+            jump: function(obj, first){
+                //obj包含了当前分页的所有参数，比如：
+                console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+                console.log(obj.limit); //得到每页显示的条数
+
+                //首次不执行
+                if(!first){
+                    //do something
+                }
+            }
+
+        });
+    });
+
+</script>

@@ -1,0 +1,30 @@
+spring:
+  freemarker:
+    suffix: .html
+#    prefix: classpath:/
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      max-lifetime: 30000
+#      maximum-pool-size: 10
+#      minimum-idle: 3
+#      connection-test-query: SELECT
+    #    username: root
+#    password: root
+#    url: jdbc:mysql://localhost/dship?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false&allowMultiQueries=true
+    username: dship
+    password: dship
+    url: jdbc:mysql://49.4.4.105:3306/dship?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false&allowMultiQueries=true
+
+#日志级别
+logging:
+  level:
+    com.jc.dship.dao: debug
+
+server:
+  port: 8083
+#  servlet:
+#    context-path: /77
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
