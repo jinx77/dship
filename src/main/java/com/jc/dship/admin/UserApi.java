@@ -66,13 +66,6 @@ public class UserApi {
     public String unAuth(){
         return "unAuth";
     }
-    //首页
-    @RequestMapping("index")
-    public String index( Model model){
-       User user= UserUtil.getUser();
-        model.addAttribute("user",user);
-        return "index";
-    }
     //登录接口
     @RequestMapping("login")
     public String login(User user, Model model){
@@ -91,7 +84,7 @@ public class UserApi {
         //3.执行登录方法
         try {
             subject.login(token);
-            return "redirect:/admin/user/index";
+            return "redirect:/";
         }catch (UnknownAccountException e){
             e.printStackTrace();
             //登录失败:用户名不存在

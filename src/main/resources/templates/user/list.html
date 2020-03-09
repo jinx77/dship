@@ -1,16 +1,27 @@
+<style>
+
+.title{
+    margin: 1% 1% 1% 1%;
+    /*display: flex;*/
+    /*flex-direction:row;*/
+}
+
+</style>
+
 <div class="layui-body" style="bottom: 0;">
     <ul class="layui-tab-title">
         <li>位置：用户列表
     </ul>
-<div class="layui-form">
-    <div class="layui-inline" style="margin-left: 60px; float: right;">
+<div class="layui-form title">
+    <button id="add" class="layui-btn zdy-green" data-method="add">添加用户</button>
+
+    <div class="layui-inline" style=" float: right;">
 
         <div class="layui-input-inline" style="width: 300px;">
             <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="输入需要查询的用户昵称/手机号" class="layui-input ssInput">
         </div>
         <button class="layui-btn zdy-green" data-method="balanceSet">查询</button>
     </div>
-    <button id="add" class="layui-btn zdy-green" data-method="add">添加用户</button>
 </div>
 
 <div>
