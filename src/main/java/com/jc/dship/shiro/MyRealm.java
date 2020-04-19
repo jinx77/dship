@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.jc.dship.pojo.User;
 import com.jc.dship.service.RoleService;
 import com.jc.dship.service.UserService;
-import com.jc.dship.util.MD5Util;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
@@ -14,8 +13,6 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -57,15 +54,13 @@ public class MyRealm extends AuthorizingRealm {
         //查询所拥有的角色
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         info.addRoles(roleList);
-
-
-
-       /* String username = JwtUtil.getUsername(principals.toString());
-        //根据用户名查询权限
-        List<Resource> resourceList = adminUserService.selectResource(username);
-        resourceList.parallelStream().forEach(resource ->
-                simpleAuthorizationInfo.addStringPermission(resource.getResourceName())
-        );*/
+//       /* String username = JwtUtil.getUsername(principals.toString());
+//        //根据用户名查询权限
+//        List<Resource> resourceList = adminUserService.selectResource(username);
+//        resourceList.parallelStream().forEach(resource ->
+//                simpleAuthorizationInfo.addStringPermission(resource.getResourceName())
+//        );*/
+        info.addStringPermission("user:p");
         return info;
 
     }

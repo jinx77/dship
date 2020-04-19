@@ -9,12 +9,12 @@
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
-        <div class="layui-logo" style="color: #0000FF; font-size: 22px;">
+        <div class="layui-logo" style="color: #F6F6F6; font-size: 22px;">
             <img src="">
-            融合支付
-            <@shiro.lacksRole name="0">
-            (商户)
-            </@shiro.lacksRole>
+            先锋回收-社区版
+<!--            <@shiro.lacksRole name="0">-->
+<!--            (商户)-->
+<!--            </@shiro.lacksRole>-->
         </div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
@@ -49,58 +49,111 @@
         <div class="layui-side-scroll">
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree"  lay-filter="test">
-                <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">数据中心</a>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;">
+                        <i class="layui-icon layui-icon-website"></i>
+                        平台设置
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">平台设置</a></dd>
+                    </dl>
+                </li>
+
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;">
+                        <i class="layui-icon layui-icon-chart"></i>
+                        回收管理
+                    </a>
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;">数据总览</a></dd>
                     </dl>
                 </li>
+
+
+
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <i class="layui-icon layui-icon-rmb"></i>
+                        财务管理
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" data-url="/admin/user/list">财务报表</a></dd>
+                        <dd><a href="javascript:;">余额</a></dd>
+                        <dd><a href="javascript:;">余额明细</a></dd>
+                        <dd><a href="javascript:;">提现列表</a></dd>
+                        <dd><a href="">超链接</a></dd>
+                    </dl>
+                </li>
+
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">
+                        <i class="layui-icon layui-icon-chart"></i>
+                        统计中心
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">
+                            <i class="layui-icon">&#xe602;</i>
+                            数据总览</a></dd>
+                    </dl>
+                </li>
+
+
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <i class="layui-icon layui-icon-user"></i>
+                        用户管理
+                    </a>
+                    <dl class="layui-nav-child">
+                    <@shiro.hasRole name="0">
+                    <dd><a href="javascript:;" data-url="/admin/user/list">
+                        <i class="layui-icon">&#xe602;</i>
+                        admin</a></dd>
+                    </@shiro.hasRole>
+
+                    <dd><a href="javascript:;">
+                        <i class="layui-icon">&#xe602;</i>
+                        回收员</a></dd>
+                    <dd><a href="javascript:;">
+                        <i class="layui-icon">&#xe602;</i>
+                        核销人员</a></dd>
+                    <@shiro.hasPermission name="user:p">
+                    <dd><a href="javascript:;">
+                        <i class="layui-icon">&#xe602;</i>
+                        微信用户</a></dd>
+                    </dl>
+                    </@shiro.hasPermission>
+                </li>
+<!--                <li class="layui-nav-item"><a href="">日志管理</a></li>-->
+<!--                <li class="layui-nav-item">-->
+<!--                    <a href="javascript:;">开发文档</a>-->
+<!--                    <dl class="layui-nav-child">-->
+<!--                        <dd><a href="javascript:;" data-url="/admin/user/list">API文档</a></dd>-->
+<!--                        <dd><a href="javascript:;">查询订单</a></dd>-->
+<!--                        <dd><a href="javascript:;">支付通知</a></dd>-->
+<!--                        <dd><a href="javascript:;">查询余额</a></dd>-->
+<!--                        <dd><a href="">超链接</a></dd>-->
+<!--                    </dl>-->
+<!--                </li>-->
                 <@shiro.hasRole name="0">
                 <li class="layui-nav-item">
-                    <a href="javascript:;">用户管理</a>
+                    <a href="javascript:;">
+                        <i class="layui-icon layui-icon-set-fill"></i>
+                        系統設置
+                    </a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;" data-url="/admin/user/list">用户列表</a></dd>
-                        <dd><a href="javascript:;">列表一</a></dd>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="/admin/user/jc">超链接</a></dd>
+                    <dd><a href="javascript:;">
+                        <i class="layui-icon">&#xe602;</i>
+                        角色管理</a></dd>
+                    <dd><a href="javascript:;">
+                        <i class="layui-icon">&#xe602;</i>
+                        菜单管理</a></dd>
+                    <dd><a href="javascript:;">
+                        <i class="layui-icon">&#xe602;</i>
+                        权限设置</a></dd>
                     </dl>
                 </li>
             </@shiro.hasRole>
 
-                <li class="layui-nav-item">
-                    <a href="javascript:;">财务管理</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="javascript:;" data-url="/admin/user/list">财务报表</a></dd>
-                        <dd><a href="javascript:;">余额</a></dd>
-                        <dd><a href="javascript:;">余额明细</a></dd>
-                        <dd><a href="javascript:;">提现列表</a></dd>
-                        <dd><a href="">超链接</a></dd>
-                    </dl>
-                </li>
-
-
-                <li class="layui-nav-item">
-                    <a href="javascript:;">银行卡管理</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="javascript:;" data-url="/admin/user/list">财务报表</a></dd>
-                        <dd><a href="javascript:;">余额</a></dd>
-                        <dd><a href="javascript:;">余额明细</a></dd>
-                        <dd><a href="javascript:;">提现列表</a></dd>
-                        <dd><a href="">超链接</a></dd>
-                    </dl>
-                </li>
-                <li class="layui-nav-item"><a href="">员工管理</a></li>
-                <li class="layui-nav-item"><a href="">日志管理</a></li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">开发文档</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="javascript:;" data-url="/admin/user/list">API文档</a></dd>
-                        <dd><a href="javascript:;">查询订单</a></dd>
-                        <dd><a href="javascript:;">支付通知</a></dd>
-                        <dd><a href="javascript:;">查询余额</a></dd>
-                        <dd><a href="">超链接</a></dd>
-                    </dl>
-                </li>
             </ul>
         </div>
     </div>
@@ -144,7 +197,7 @@
         $("a").click(function () {
              var url=$(this).data("url");
              $("#jc").load(url);
-            //element.init();
+            element.init();
             // $.ajax({
             // url:url,
             //     success:function (html) {

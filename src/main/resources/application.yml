@@ -9,12 +9,12 @@ spring:
 #      maximum-pool-size: 10
 #      minimum-idle: 3
 #      connection-test-query: SELECT
-    #    username: root
-#    password: root
-#    url: jdbc:mysql://localhost/dship?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false&allowMultiQueries=true
-    username: dship
-    password: dship
-    url: jdbc:mysql://49.4.4.105:3306/dship?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false&allowMultiQueries=true
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost/dship?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false&allowMultiQueries=true
+#    username: dship
+#    password: dship
+#    url: jdbc:mysql://49.4.4.105:3306/dship?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false&allowMultiQueries=true
 
 #日志级别
 logging:
