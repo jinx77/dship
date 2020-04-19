@@ -47,10 +47,10 @@
         <tbody>
         <#list userList as user>
         <tr>
-            <td><img src="${user.userIcon}" width="60px"></td>
-            <td>${(user.userName)}</td>
+            <td><img src="${user.icon}" width="60px"></td>
+            <td>${(user.account)}</td>
             <td>${user.nickname}</td>
-            <td>${user.userPhone}</td>
+            <td>${user.phone}</td>
             <td>${user.totalMoney}元</td>
             <td>${user.loginTime!?string('yyyy-MM-dd hh:mm:ss')}</td>
             <td>${user.createTime!?string('yyyy-MM-dd hh:mm:ss')}</td>

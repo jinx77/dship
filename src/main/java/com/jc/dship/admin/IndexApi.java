@@ -2,15 +2,10 @@ package com.jc.dship.admin;
 
 
 import com.jc.dship.pojo.User;
-import com.jc.dship.service.UserService;
-import com.jc.dship.util.MD5Util;
 import com.jc.dship.util.UserUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
-
-import java.util.List;
 
 
 /**

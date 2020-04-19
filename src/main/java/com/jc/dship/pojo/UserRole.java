@@ -16,19 +16,19 @@ package com.jc.dship.pojo;
     @Data
         @EqualsAndHashCode(callSuper = false)
     @Accessors(chain = true)
-    public class Role implements Serializable {
+    public class UserRole implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
             /**
-            * 角色名称
+            * 用户主键ID
             */
-    private String name;
+    private String userId;
 
             /**
-            * 备注
+            * 角色主键ID
             */
-    private String remarks;
+    private String roleId;
 
 
 }

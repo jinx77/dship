@@ -6,7 +6,6 @@ import com.jc.dship.pojo.User;
 import com.jc.dship.service.UserService;
 import com.jc.dship.util.MD5Util;
 import com.jc.dship.util.UserUtil;
-import com.jc.dship.vo.UserVO;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
@@ -40,7 +39,7 @@ public class UserApi {
        User user= UserUtil.getUser();
        System.out.println("user---"+user.toString());
         QueryWrapper queryWrapper=new QueryWrapper<>();
-        queryWrapper.eq("parent_id",user.getUserId());
+        queryWrapper.eq("parent_id",user.getId());
         List<User> userList= userService.list(queryWrapper);
 
         userList.forEach(userVO -> System.out.println(userVO.toString()));
@@ -70,7 +69,7 @@ public class UserApi {
     @RequestMapping("login")
     public String login(User user, Model model){
 
-        String password= MD5Util.getMD5Sign(user.getUserName(),user.getPassword());
+        String password= MD5Util.getMD5Sign(user.getAccount(),user.getPassword());
         /**
          * 使用Shiro编写认证操作
          *
@@ -79,7 +78,7 @@ public class UserApi {
         Subject subject = SecurityUtils.getSubject();
 
         //2.封装用户数据
-        UsernamePasswordToken token=new UsernamePasswordToken(user.getUserName(),password);
+        UsernamePasswordToken token=new UsernamePasswordToken(user.getAccount(),password);
 
         //3.执行登录方法
         try {

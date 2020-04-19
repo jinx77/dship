@@ -33,7 +33,7 @@
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
                 <a href="javascript:;">
-                   <img src="${user.userIcon!}" class="layui-nav-img">
+                   <img src="${user.icon!}" class="layui-nav-img">
                     ${user.nickname!}
                 </a>
                 <dl class="layui-nav-child">
@@ -49,6 +49,7 @@
         <div class="layui-side-scroll">
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <@shiro.hasPermission name="user:p">
                 <li class="layui-nav-item">
                     <a class="" href="javascript:;">
                         <i class="layui-icon layui-icon-website"></i>
@@ -58,7 +59,7 @@
                         <dd><a href="javascript:;">平台设置</a></dd>
                     </dl>
                 </li>
-
+            </@shiro.hasPermission>
                 <li class="layui-nav-item">
                     <a class="" href="javascript:;">
                         <i class="layui-icon layui-icon-chart"></i>

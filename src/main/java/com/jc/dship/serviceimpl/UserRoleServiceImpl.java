@@ -1,8 +1,8 @@
 package com.jc.dship.serviceimpl;
 
-import com.jc.dship.pojo.Role;
-import com.jc.dship.dao.RoleDao;
-import com.jc.dship.service.RoleService;
+import com.jc.dship.pojo.UserRole;
+import com.jc.dship.dao.UserRoleDao;
+import com.jc.dship.service.UserRoleService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2020-04-19
  */
 @Service
-public class RoleServiceImpl extends ServiceImpl<RoleDao, Role> implements RoleService {
+public class UserRoleServiceImpl extends ServiceImpl<UserRoleDao, UserRole> implements UserRoleService {
 
 }

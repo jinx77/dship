@@ -1,10 +1,10 @@
 package com.jc.dship.pojo;
 
     import java.math.BigDecimal;
+    import java.time.LocalDateTime;
     import java.io.Serializable;
     import java.util.Date;
 
-    import com.fasterxml.jackson.annotation.JsonFormat;
     import lombok.Data;
     import lombok.EqualsAndHashCode;
     import lombok.experimental.Accessors;
@@ -15,7 +15,7 @@ package com.jc.dship.pojo;
     * </p>
 *
 * @author jc
-* @since 2019-10-13
+* @since 2020-04-19
 */
     @Data
         @EqualsAndHashCode(callSuper = false)
@@ -25,9 +25,9 @@ package com.jc.dship.pojo;
     private static final long serialVersionUID = 1L;
 
             /**
-            * 主键ID
+            * id
             */
-    private String userId;
+    private String id;
 
             /**
             * 父级id
@@ -37,12 +37,17 @@ package com.jc.dship.pojo;
             /**
             * 登录账号
             */
-    private String userName;
+    private String account;
 
             /**
             * 登录密码
             */
     private String password;
+
+            /**
+            * 用户姓名
+            */
+    private String name;
 
             /**
             * 用户昵称
@@ -52,12 +57,17 @@ package com.jc.dship.pojo;
             /**
             * 用户头像
             */
-    private String userIcon;
+    private String icon;
 
             /**
             * 联系电话
             */
-    private String userPhone;
+    private String phone;
+
+            /**
+            * 所属组织
+            */
+    private String groupId;
 
             /**
             * 是否禁用 0正常 1禁用
@@ -67,22 +77,27 @@ package com.jc.dship.pojo;
             /**
             * 邮箱
             */
-    private String userEmail;
+    private String email;
 
             /**
             * 性别
             */
-    private String userSex;
+    private String sex;
 
             /**
             * 个性签名
             */
-    private String userGxqm;
+    private String gxqm;
 
             /**
             * 二维码
             */
     private String userQrcode;
+
+            /**
+            * 用户OpenID
+            */
+    private String openId;
 
             /**
             * 总金额
@@ -118,4 +133,6 @@ package com.jc.dship.pojo;
             * 更新时间
             */
     private Date updateTime;
+
+
 }

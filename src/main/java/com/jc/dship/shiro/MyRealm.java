@@ -1,7 +1,10 @@
 package com.jc.dship.shiro;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.jc.dship.dao.PermissionDao;
+import com.jc.dship.pojo.Permission;
 import com.jc.dship.pojo.User;
+import com.jc.dship.service.PermissionService;
 import com.jc.dship.service.RoleService;
 import com.jc.dship.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -26,9 +29,10 @@ import java.util.List;
 public class MyRealm extends AuthorizingRealm {
 
     @Autowired
-    private RoleService roleService;
-    @Autowired
     UserService userService;
+
+    @Autowired
+    PermissionDao permissionDao;
 
     /**
      * 必须重写此方法，不然Shiro会报错
@@ -48,19 +52,15 @@ public class MyRealm extends AuthorizingRealm {
 
         System.out.println("执行授权逻辑");
         //1、获取登录时输入的用户名
-     //   String loginName=(String) principals.fromRealm(getName()).iterator().next();
+//        String loginName=(String) principals.fromRealm(getName()).iterator().next();
         User user = (User) SecurityUtils.getSubject().getPrincipal();
-        List<String> roleList= roleService.selectRoleListUById(user.getUserName());
+//        List<String> roleList= roleService.selectRoleListUById(user.getUserName());
         //查询所拥有的角色
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
-        info.addRoles(roleList);
-//       /* String username = JwtUtil.getUsername(principals.toString());
-//        //根据用户名查询权限
-//        List<Resource> resourceList = adminUserService.selectResource(username);
-//        resourceList.parallelStream().forEach(resource ->
-//                simpleAuthorizationInfo.addStringPermission(resource.getResourceName())
-//        );*/
-        info.addStringPermission("user:p");
+//        info.addRoles(roleList);
+//       String username = JwtUtil.getUsername(principals.toString());
+        //根据用户名查询权限
+        info.addStringPermissions(permissionDao.selectIdentifierList(user.getId()));
         return info;
 
     }
@@ -75,17 +75,10 @@ public class MyRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken auth) throws AuthenticationException {
-
-
-
-
-
         System.out.println("执行登录认证逻辑");
-
         UsernamePasswordToken token=(UsernamePasswordToken)auth;
-
         QueryWrapper<User> userQueryWrapper=new QueryWrapper<>();
-        userQueryWrapper.eq("user_name",token.getUsername());
+        userQueryWrapper.eq("account",token.getUsername());
         User user=userService.getOne(userQueryWrapper);
        if (user==null){
            throw new UnknownAccountException("你输入的用户名不存在");

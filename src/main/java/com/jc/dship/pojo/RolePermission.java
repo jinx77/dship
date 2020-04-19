@@ -16,19 +16,24 @@ package com.jc.dship.pojo;
     @Data
         @EqualsAndHashCode(callSuper = false)
     @Accessors(chain = true)
-    public class Role implements Serializable {
+    public class RolePermission implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
             /**
-            * 角色名称
+            * 角色ID
             */
-    private String name;
+    private String roleId;
 
             /**
-            * 备注
+            * 菜单ID
             */
-    private String remarks;
+    private String permissionId;
+
+            /**
+            * 1可访问，2可授权
+            */
+    private String permissionType;
 
 
 }
